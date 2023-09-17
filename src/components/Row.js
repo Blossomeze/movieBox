@@ -24,7 +24,7 @@ function Row({ title, fetchUrl, isLargeRow = false }) {
   console.log(movies);
   
   return (
-    <div className='text-[#000] my-7 flex flex-col'>
+    <div className='text-[#000] my-9 flex flex-col'>
       <div className='flex justify-between items-center mx-[50px] my-3'>
         <h2 className='text-4xl font-bold overflow-y-hidden'>{title}</h2>
         {/* Link to a see more page */}

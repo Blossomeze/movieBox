@@ -9,7 +9,7 @@ const Details = () => {
   const apiKey = '3bd90629367bc8c7938a4ad92f398477';
 
   // Move the useState calls to the top of the component
-  const [movieDetails, setMovieDetails] = useState(null);
+  const [movieDetails, setMovieDetails] = useState({});
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
   useEffect(() => {

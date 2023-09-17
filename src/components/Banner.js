@@ -41,11 +41,11 @@ function Banner() {
             <h1 className="text-5xl font-bold leading-[56px] pb-2 max-w-[500px]">{movie?.title || movie?.name || movie?.original_name}</h1>
             <div className='flex items-center pl-1 justify-between max-w-[200px]'>
               <div className='flex items-center justify-center text-center'>
-              <img src={tmdb} />
+              <img src={tmdb} alt="tmdb logo" />
               <h4 className='pl-3'>{movie?.vote_count}/100</h4>
               </div>
               <div className='flex items-center justify-center text-center pl-[20px]'>
-                <img src={tomato} />
+                <img src={tomato} alt="rotten tomato" />
                 <h4 className='pl-3'>{movie?.vote_average * 10}%</h4>
               </div>
             </div>
