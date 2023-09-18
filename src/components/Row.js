@@ -38,7 +38,7 @@ function TopMovies() {
           See More <ChevronRightIcon />
         </Link>
       </div>
-      <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-4 gap-4 mx-3 p-5 my-8'>
+      <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-4 gap-14 p-5 my-8'>
         {topMovies.map((movie) => (
           <Link to={`/movie/${movie.id}`} key={movie.id} className="movie-card text-[#000]" data-testid={`movie-card-${movie.id}`}>
             <img
