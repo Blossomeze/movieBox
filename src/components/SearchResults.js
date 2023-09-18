@@ -2,10 +2,13 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useLocation } from 'react-router-dom';
 import Row from './Row'; // Import the Row component
+import Sidebar from './Sidebar';
+import logo from '../assets/tv.png';
 
 const SearchResults = () => {
   const [searchResults, setSearchResults] = useState([]);
   const [error, setError] = useState(null); // Add an error state
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const location = useLocation();
   const searchParams = new URLSearchParams(location.search);
   const query = searchParams.get('q'); // Get the search query from the URL query parameter
@@ -36,21 +39,34 @@ const SearchResults = () => {
       setSearchResults([]);
     }
   }, [query]);
+  const handleLogoClick = () => {
+    setIsSidebarOpen(!isSidebarOpen);
+  };
 
   return (
     <div>
-      <h2>Search Results for: {query}</h2>
+      <div className='flex mx-10'>
+        <div className='flex mt-8 items-center h-[50px]'>
+           <img
+        src={logo}
+        onClick={handleLogoClick}
+        alt='brand logo'
+        className='cursor-pointer w-[35px] h-[35px]'
+      /> <h2 onClick={handleLogoClick} className='font-bold text-2xl text-[#000] px-2'>MovieBox</h2>
+        </div>
+      <Sidebar isOpen={isSidebarOpen} onClose={() => setIsSidebarOpen(false)} />
+      </div>
       {error ? (
         <p>{error}</p>
       ) : (
-        <div className="flex flex-wrap mx-3">
+        <div className="flex flex-wrap mx-3 my-2">
           {searchResults.length === 0 ? (
             <p>No movies found. Try a different search term or explore our recommendations.
               <Row title="Recommendations" />
             </p>
             
           ) : (
-            searchResults.map((movie) => <Row title={`Search results for ${query}`} key={movie.id} movie={movie}  movies={searchResults} />)
+            searchResults.map((movie) => <Row title={`Search results for : ${query}`} key={movie.id} movie={movie}  movies={searchResults} />)
           )}
         </div>
       )}
