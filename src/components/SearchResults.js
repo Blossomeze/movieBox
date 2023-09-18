@@ -39,6 +39,7 @@ const SearchResults = () => {
       setSearchResults([]);
     }
   }, [query]);
+
   const handleLogoClick = () => {
     setIsSidebarOpen(!isSidebarOpen);
   };
@@ -61,12 +62,9 @@ const SearchResults = () => {
       ) : (
         <div className="flex flex-wrap mx-3 my-2">
           {searchResults.length === 0 ? (
-            <p>No movies found. Try a different search term or explore our recommendations.
-              <Row title="Recommendations" />
-            </p>
-            
+            <p>No movies found. Try a different search term or explore our recommendations.</p>
           ) : (
-            searchResults.map((movie) => <Row title={`Search results for : ${query}`} key={movie.id} movie={movie}  movies={searchResults} />)
+            <Row title={`Search results for : ${query}`} movies={searchResults} />
           )}
         </div>
       )}
