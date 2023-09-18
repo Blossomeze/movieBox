@@ -63,7 +63,7 @@ const Sidebar = ({ isOpen, onClose }) => {
         <div>
         </div>
       </div>
-      <nav>
+      <nav className='text-[#000]'>
         <ul>
           {menuItem.map((item, index) => (
             <li key={index}>
@@ -79,7 +79,7 @@ const Sidebar = ({ isOpen, onClose }) => {
           ))}
         </ul>
       </nav>
-      <div className="bg-button bg-opacity-10 rounded-[20px] border-2 border-button mx-5 p-5">
+      <div className="bg-button bg-opacity-10 rounded-[20px] border-2 border-button mx-5 p-5 text-[#000]">
           <h2 className="font-semibold pt-6 pb-3">Play movie quizzes and earn free tickets</h2>
           <h3>50k people are playing now</h3>
           <div className="text-center">

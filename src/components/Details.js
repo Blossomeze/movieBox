@@ -67,7 +67,13 @@ const Details = () => {
           title="Trailer"
           allowFullScreen
         ></iframe>
-        <h2>{movieDetails.title}</h2>
+        <div className='py-3'>
+          <h2 className='font-bold text-2xl'>{movieDetails.title} {movieDetails.year} </h2>
+
+        </div>
+       <div>
+        <h3>{movieDetails.overview}</h3>
+       </div>
       </div>
     </div>
   );

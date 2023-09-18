@@ -3,37 +3,42 @@ import axios from '../axios';
 import tmdb from '../assets/imdb.png';
 import tomato from '../assets/tomato.png';
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
-import { Link } from 'react-router-dom'; // Import Link for navigation
+import { Link } from 'react-router-dom';
 
-function Row({ title, fetchUrl, isLargeRow = false }) {
-  const [movies, setMovies] = useState([]);
+function Row({ title, fetchUrl, isLargeRow = false, movies }) {
+  const [fetchedMovies, setFetchedMovies] = useState([]);
   const base_url = 'https://image.tmdb.org/t/p/original/';
 
   useEffect(() => {
     async function fetchData() {
       try {
-        const request = await axios.get(fetchUrl);
-        setMovies(request.data.results);
+        if (movies && movies.length > 0) {
+          // If movies prop exists and is not empty, use it
+          setFetchedMovies(movies);
+        } else {
+          // Otherwise, fetch data from the API
+          const request = await axios.get(fetchUrl);
+          setFetchedMovies(request.data.results);
+        }
       } catch (error) {
         console.error('Error fetching data:', error);
       }
     }
     fetchData();
-  }, [fetchUrl]);
+  }, [fetchUrl, movies]);
 
-  console.log(movies);
-  
+  console.log(fetchedMovies);
+
   return (
     <div className='text-[#000] my-9 flex flex-col'>
       <div className='flex justify-between items-center mx-[50px] my-3'>
         <h2 className='text-4xl font-bold overflow-y-hidden'>{title}</h2>
-        {/* Link to a see more page */}
         <Link to={`/see-more/${title}`} className='text-button text-lg font-normal hover:underline flex items-center'>
           See More <ChevronRightIcon />
         </Link>
       </div>
-      <div className='scroll flex overflow-y-hidden justify-between mx-3 flex-wrap p-5 my-6'>
-        {movies.map((movie) => (
+      <div className='scroll flex overflow-y-hidden justify-between mx-3 flex-wrap p-5 my-8'>
+        {fetchedMovies.map((movie) => (
           ((isLargeRow && movie.poster_path) ||
             (!isLargeRow && movie.backdrop_path)) && (
             <Link to={`/movie/${movie.id}`} key={movie.id} className="movie-card flex-shrink-0 w-[21vw] p-2 mx-3 text-[#000]">
