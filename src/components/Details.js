@@ -43,13 +43,13 @@ const Details = () => {
   };
 
   return (
-    <div className='flex' data-testid='details'>
-      <div className='w-[20vw] flex ml-5 mt-8 items-center h-[50px]' data-testid='details-logo-container'>
+    <div className='flex flex-col lg:flex-row ' data-testid='details'>
+      <div className='lg:w-[20vw] flex ml-5 mt-8 items-center h-[50px]' data-testid='details-logo-container'>
         <img
           src={logo}
           onClick={handleLogoClick}
           alt='brand logo'
-          className='cursor-pointer w-[35px] h-[35px]'
+          className='cursor-pointer lg:w-[35px] h-[35px]'
           data-testid='details-logo'
         />
         <h2 onClick={handleLogoClick} className='font-bold text-2xl text-[#000] px-2' data-testid='details-title'>

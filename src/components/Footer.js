@@ -14,10 +14,10 @@ function Footer() {
         <span><YouTubeIcon /></span>
       </div>
       <div className='py-4'> 
-        <nav className='text-lg font-bold'>
-            <a href='/' className='hover:text-graytext px-4'>Conditions of Use</a>
-            <a href='/' className='hover:text-graytext px-4'>Privacy Policy</a>
-            <a href='/' className='hover:text-graytext px-4'>Press Room</a>
+        <nav className='lg:text-lg text-base font-bold'>
+            <a href='/' className='hover:text-graytext lg:px-4'>Conditions of Use</a>
+            <a href='/' className='hover:text-graytext px-3 lg:px-4'>Privacy Policy</a>
+            <a href='/' className='hover:text-graytext lg:px-4'>Press Room</a>
         </nav>
       </div>
       <div>

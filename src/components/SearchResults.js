@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useLocation } from 'react-router-dom';
-import Row from './Row'; // Import the Row component
+import SearchRow from './SearchRow'; // Import the Row component
 import Sidebar from './Sidebar';
 import logo from '../assets/tv.png';
 
@@ -43,6 +43,7 @@ const SearchResults = () => {
   const handleLogoClick = () => {
     setIsSidebarOpen(!isSidebarOpen);
   };
+  console.log(searchResults);
 
   return (
     <div>
@@ -64,7 +65,7 @@ const SearchResults = () => {
           {searchResults.length === 0 ? (
             <p>No movies found. Try a different search term or explore our recommendations.</p>
           ) : (
-            <Row title={`Search results for : ${query}`} movies={searchResults} />
+            <SearchRow title={`Search results for : ${query}`} movies={searchResults} />
           )}
         </div>
       )}

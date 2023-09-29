@@ -43,7 +43,7 @@ function Header() {
       }}
     >
       <div
-        className={`flex px-12 py-3 items-center text-center justify-between ${
+        className={`flex px-5 lg:px-12 py-3 items-center text-center justify-between ${
           show && 'flex px-12 py-3 bg-primary opacity-80 items-center text-center justify-between'
         }`}
       >

@@ -5,14 +5,14 @@ import tomato from '../assets/tomato.png';
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 import { Link } from 'react-router-dom';
 
-function TopMovies() {
-  const [topMovies, setTopMovies] = useState([]);
+function SearchRow({ title, isLargeRow = false, movies }) {
+  const [Movies, setMovies] = useState([]);
   const base_url = 'https://image.tmdb.org/t/p/original/';
 
   useEffect(() => {
-    async function fetchTopMovies() {
+    async function fetchMovies() {
       try {
-        const request = await axios.get('https://api.themoviedb.org/3/movie/top_rated', {
+        const request = await axios.get('https://image.tmdb.org/t/p/original/' , {
           params: {
             api_key: '3bd90629367bc8c7938a4ad92f398477',
             language: 'en-US',
@@ -21,13 +21,13 @@ function TopMovies() {
         });
 
         // Slice the data to limit to the top 10 movies
-        setTopMovies(request.data.results.slice(0, 12));
+        setMovies(request.data.results.slice(0, 12));
       } catch (error) {
         console.error('Error fetching top movies:', error);
       }
     }
 
-    fetchTopMovies();
+    fetchMovies();
   }, []);
 
   return (
@@ -39,7 +39,7 @@ function TopMovies() {
         </Link>
       </div>
       <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-4 gap-14 p-5 my-8'>
-        {topMovies.map((movie) => (
+        {movies.map((movie) => (
           <Link to={`/movie/${movie.id}`} key={movie.id} className="movie-card text-[#000]" data-testid={`movie-card-${movie.id}`}>
             <img
               className='poster h-[370px] w-auto object-cover'
@@ -77,4 +77,4 @@ function TopMovies() {
   );
 }
 
-export default TopMovies;
+export default SearchRow;
