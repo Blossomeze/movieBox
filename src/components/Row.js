@@ -10,25 +10,23 @@ function TopMovies() {
   const base_url = 'https://image.tmdb.org/t/p/original/';
 
   useEffect(() => {
-    async function fetchTopMovies() {
+    async function fetchTrendingMovies() {
       try {
-        const request = await axios.get('https://api.themoviedb.org/3/movie/top_rated', {
+        const request = await axios.get('https://api.themoviedb.org/3/trending/movie/week', {
           params: {
             api_key: '3bd90629367bc8c7938a4ad92f398477',
-            language: 'en-US',
-            page: 1,
           },
         });
-
-        // Slice the data to limit to the top 10 movies
+  
         setTopMovies(request.data.results.slice(0, 12));
       } catch (error) {
-        console.error('Error fetching top movies:', error);
+        console.error('Error fetching trending movies:', error);
       }
     }
-
-    fetchTopMovies();
+  
+    fetchTrendingMovies();
   }, []);
+  
 
   return (
     <div className='text-[#000] my-9 flex flex-col items-center w-[100vw]'>
