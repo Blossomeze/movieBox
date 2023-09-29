@@ -79,7 +79,7 @@ function Header() {
         </div>
       </div>
       {isSidebarOpen && (
-        <div className='fixed top-0 left-0 h-screen w-1/3 bg-gray-800 text-white transition-transform duration-300 transform translate-x-0'>
+        <div className='fixed top-0 left-0 h-screen w-[60vw] lg:w-1/3 bg-gray-800 text-white transition-transform duration-300 transform translate-x-0'>
           <Sidebar isOpen={isSidebarOpen} onClose={() => setIsSidebarOpen(false)} />
         </div>
       )}
